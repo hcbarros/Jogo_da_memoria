@@ -7,12 +7,15 @@ package jogo;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
@@ -29,7 +32,7 @@ public class Jogo {
     private boolean imagemAtiva = true;
     private int imagem = 0;
     private int sizeIcon = 0;
-        
+            
     
     public Jogo(Frame meuframe) {
         
@@ -37,15 +40,27 @@ public class Jogo {
         numeros = new ArrayList<>();
         botoes = new ArrayList<>();
         int n = frame.getNivel();                             
+        int quantia = frame.getImagens().size();
         
-        if(n == 1) dificuldade(150, 12, 1); 
-        if(n == 2) dificuldade(150, 12, 2);
-        if(n == 3) dificuldade(150, 18, 3);
-        if(n == 4) dificuldade(150, 18, 4);
-        if(n == 5) dificuldade(120, 24, 5);
-        if(n == 6) dificuldade(120, 24, 6);
-        if(n == 7) dificuldade(120, 30, 7);
-        if(n == 8) dificuldade(120, 30, 8);
+        if(quantia > 0 && quantia <= 6)
+        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2"}));
+        if( quantia > 6 &&  quantia <= 9)
+        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4"}));
+        if( quantia > 9 &&  quantia <= 12)
+        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6"}));
+        if( quantia > 12 &&  quantia <= 16)
+        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6", "7", "8"}));
+        frame.getCombo().setSelectedIndex(frame.getNivel() - 1);
+        
+        
+        if(n == 1) dificuldade(150, quantia > 0 && quantia <= 6 ? (quantia*2) : 12, 1); 
+        if(n == 2) dificuldade(150, quantia > 0 && quantia <= 6 ? (quantia*2) : 12, 2);
+        if(n == 3) dificuldade(150, quantia > 6 && quantia <= 9 ? (quantia*2) : 18, 3);
+        if(n == 4) dificuldade(150, quantia > 6 && quantia <= 9 ? (quantia*2) : 18, 4);
+        if(n == 5) dificuldade(120, quantia > 9 && quantia <= 12 ? (quantia*2) : 24, 5);
+        if(n == 6) dificuldade(120, quantia > 9 && quantia <= 12 ? (quantia*2) : 24, 6);
+        if(n == 7) dificuldade(120, quantia > 12 && quantia <= 16 ? (quantia*2) : 30, 7);
+        if(n == 8) dificuldade(120, quantia > 12 && quantia <= 16 ? (quantia*2) : 30, 8);
         
         frame.setMaximoErros(n == 1 || n == 3 || n == 6 || n == 8 ? 9 : 
                 n == 2 || n == 4 ? 4 : 19);
@@ -67,6 +82,7 @@ public class Jogo {
                 
         for(int i = 100; i <= 500; i = i + 200) {
             for(int j = 100; j <= 1000; j = j + 300) {
+                if(numeros.isEmpty()) break;
                 JButton button = criarBotao(j, i);
                 botoes.add(button);
                 int num = imagem;
@@ -84,6 +100,7 @@ public class Jogo {
                 
         for(int i = 100; i <= 500; i = i + 200) {
             for(int j = 50; j <= 1200; j = j + 200) {
+                if(numeros.isEmpty()) break;
                 JButton button = criarBotao(j, i);
                 botoes.add(button);
                 int num = imagem;
@@ -149,9 +166,17 @@ public class Jogo {
     
     private ImageIcon getIcon(int x) {
        
-        String imagem = "int";
-        if(x > 0) imagem = Integer.toString(x);
-        ImageIcon icon = new ImageIcon("src/imagens/"+imagem+".png");
+        ImageIcon icon = null;
+        if(frame.getImagens().isEmpty()) {
+            String imagem = "int";
+            if(x > 0) imagem = Integer.toString(x);
+            icon = new ImageIcon("src/imagens/"+imagem+".png");
+        }
+        else {
+            if(x == 0) icon = new ImageIcon("src/imagens/int.png");
+            else icon = new ImageIcon(frame.getImagens().get(x-1).getAbsolutePath());
+        }
+        
         icon.setImage(icon.getImage().getScaledInstance(sizeIcon, sizeIcon, 100));
         return icon;
     }

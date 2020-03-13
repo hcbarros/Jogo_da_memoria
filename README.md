@@ -12,3 +12,5 @@ par de imagens.
 Os níveis de dificuldade variam de acordo com a quantidade de figuras e tentativas de adivinhação.
 
 O jogador pode reiniciar e sortear as posições das imagens a qualquer momento e quantas vezes quiser.
+
+Na branch "versão2", o usuario pode adicionar suas próprias imagens ou utilizar as imagens contidas no jogo. Para utilizar suas imagens, o usuário deve carregar no mínimo 6 imagens e no máximo 16.

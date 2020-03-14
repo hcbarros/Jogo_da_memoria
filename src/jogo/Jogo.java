@@ -34,6 +34,7 @@ public class Jogo {
     public Jogo(Frame meuframe) {
         
         frame = meuframe;
+        frame.getBotaoInicio().setEnabled(false);
         numeros = new ArrayList<>();
         botoes = new ArrayList<>();
         int n = frame.getNivel();                             
@@ -174,6 +175,7 @@ public class Jogo {
                     imagem = 0;
                     imagemAtiva = false;
                     botoes.clear();
+                    frame.getBotaoInicio().setEnabled(true);
                 }
             }
         });     

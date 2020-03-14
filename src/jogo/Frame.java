@@ -27,7 +27,7 @@ public class Frame extends JFrame {
 	
         private static final long serialVersionUID = 2L;
         private JComboBox comboBox = null;
-        private boolean inicio = false;
+        private JButton botaoInicio = null;
         private int nivel = 1;
         private int erros = 0;
         private JLabel labelErros = null;
@@ -61,15 +61,15 @@ public class Frame extends JFrame {
         public JComboBox getCombo() {            
             return comboBox;
         }
+       
+        public JButton getBotaoInicio(){
+            return botaoInicio;
+        }
         
         public int getNivel() {
             return nivel;
         }
-        
-        public boolean getInicio() {
-            return inicio;
-        }
-        
+                    
         public int getErros() {
             return erros;
         }
@@ -77,11 +77,7 @@ public class Frame extends JFrame {
         public void setNivel(int nivel) {
             this.nivel = nivel;
         }
-        
-        public void setInicio(boolean inicio) {
-            this.inicio = inicio;
-        }
-        
+                      
         public void setErros(){
             erros++;
         }
@@ -133,10 +129,10 @@ public class Frame extends JFrame {
 	            comboBox.setSelectedIndex(nivel-1);
             
             
-            JButton button = new JButton("Iniciar");                         
-            contentPane.add(button);
-            button.setBounds(230, 0, 100, 30);    
-            button.addActionListener((ActionEvent evt) -> {
+            botaoInicio = new JButton("Iniciar");                         
+            contentPane.add(botaoInicio);
+            botaoInicio.setBounds(230, 0, 100, 30);    
+            botaoInicio.addActionListener((ActionEvent evt) -> {
                                 
                 if(!imagens.isEmpty()) { 
                     

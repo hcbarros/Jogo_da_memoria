@@ -6,13 +6,22 @@
 package jogo;
 
 import java.util.List;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import javax.swing.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 
 public class Frame extends JFrame {
 	

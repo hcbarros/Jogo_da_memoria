@@ -41,17 +41,9 @@ public class Jogo {
         int n = frame.getNivel();                             
         int quantia = frame.getImagens().size();
         
-        if(quantia > 0 && quantia <= 6)
-        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2"}));
-        if( quantia > 6 &&  quantia <= 9)
-        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4"}));
-        if( quantia > 9 &&  quantia <= 12)
-        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6"}));
-        if( quantia > 12 &&  quantia <= 16)
-        frame.getCombo().setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6", "7", "8"}));
+        frame.definirNiveis();
         frame.getCombo().setSelectedIndex(frame.getNivel() - 1);
-        
-        
+                
         if(n == 1) dificuldade(150, quantia > 0 && quantia <= 6 ? (quantia*2) : 12, 1); 
         if(n == 2) dificuldade(150, quantia > 0 && quantia <= 6 ? (quantia*2) : 12, 2);
         if(n == 3) dificuldade(150, quantia > 6 && quantia <= 9 ? (quantia*2) : 18, 3);

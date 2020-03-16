@@ -196,16 +196,7 @@ public class Frame extends JFrame {
                    }
                
                    comboBox.setSelectedIndex(0);
-                   
-                   if(imagens.size() > 0 && imagens.size() <= 6)
-                   comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2"}));
-                   if(imagens.size() > 6 && imagens.size() <= 9)
-                   comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4"}));
-                   if(imagens.size() > 9 && imagens.size() <= 12)
-                   comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6"}));
-                   if(imagens.size() > 12 && imagens.size() <= 16)
-                   comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6", "7", "8"}));
-               
+                   definirNiveis();
                }
                 
             });                
@@ -246,6 +237,18 @@ public class Frame extends JFrame {
             l.setFont(f);
             this.getContentPane().add(l);
             l.setBounds(400, 300, 500, 100);            
+        }
+        
+        public void definirNiveis() {
+            
+            if(imagens.size() > 0 && imagens.size() <= 6)
+            comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2"}));
+            if(imagens.size() > 6 && imagens.size() <= 9)
+            comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4"}));
+            if(imagens.size() > 9 && imagens.size() <= 12)
+            comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6"}));
+            if(imagens.size() > 12 && imagens.size() <= 16)
+            comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6", "7", "8"}));            
         }
         
         public static String utfToIso(String mensagem){

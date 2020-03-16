@@ -69,7 +69,7 @@ public class Jogo {
             
     }
        
-    public void jogo(int a, int b, int c, int d) {
+    public void exibirImagens(int a, int b, int c, int d) {
                 
         for(int i = 100; i <= (500 + a); i = i + (200 - a)) {
             for(int j = b; j <= c; j = j + d) {
@@ -198,34 +198,19 @@ public class Jogo {
         }
         clone = new ArrayList<>(numeros);
                 
-        if(nivel == 1 || nivel == 2) jogo(0,100,1000,300);
-        if(nivel == 3 || nivel == 4) jogo(0,50,1200,200);
-        if(nivel == 5 || nivel == 6) jogo(0,30,1200,160);
-        if(nivel == 7 || nivel == 8) jogo(50,30,1200,160);
+        if(nivel == 1 || nivel == 2) exibirImagens(0,100,1000,300);
+        if(nivel == 3 || nivel == 4) exibirImagens(0,50,1200,200);
+        if(nivel == 5 || nivel == 6) exibirImagens(0,30,1200,160);
+        if(nivel == 7 || nivel == 8) exibirImagens(50,30,1200,160);
     }
     
     private void definirJogo(){
-        
-        if(frame.getNivel() == 1 || frame.getNivel() == 3) {
-            
-            if(frame.getErros() == 10) derrota();           
-        } 
-        
-        if(frame.getNivel() == 2 || frame.getNivel() == 4) {
-            
-            if(frame.getErros() == 5) derrota();            
-        } 
-        
-        if(frame.getNivel() == 5 || frame.getNivel() == 7) {
-            
-            if(frame.getErros() == 20) derrota();            
-        } 
-        
-         if(frame.getNivel() == 6 || frame.getNivel() == 8) {
-            
-            if(frame.getErros() == 10) derrota();            
-        }               
-        
+                
+        quantiaErros(1, 10);
+        quantiaErros(2, 5);
+        quantiaErros(5, 20);
+        quantiaErros(6, 10);
+                
         if(clone.size() == 0) {
          
             frame.setMensagem("Parabéns! Você venceu!");
@@ -233,9 +218,14 @@ public class Jogo {
         }
     }
     
-    private void derrota() {
-        frame.setMensagem("Fim de jogo! Você perdeu!");
-        frame.gameOver();
-    }
+    private void quantiaErros(int nivel, int erros) {
+        
+        if(frame.getNivel() == nivel || frame.getNivel() == (nivel + 2)) {            
+            if(frame.getErros() == erros) {
+                frame.setMensagem("Fim de jogo! Você perdeu!");
+                frame.gameOver();
+            }            
+        }  
+    } 
        
 }

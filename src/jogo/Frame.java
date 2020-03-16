@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package jogo;
 
 import java.util.List;
@@ -106,7 +103,7 @@ public class Frame extends JFrame {
             int largura = (int)this.getToolkit().getScreenSize().getWidth();
             
             this.setSize(largura, altura);
-            this.setTitle(utfToIso("Jogo da memória"));
+            this.setTitle("Jogo da memória");
             
             JPanel contentPane = (JPanel) this.getContentPane();
             contentPane.setLayout(null);
@@ -124,9 +121,9 @@ public class Frame extends JFrame {
 	                dificuldade(evt);
 	            });
             }
-	            contentPane.add(comboBox);  
-	            comboBox.setBounds(120, 0, 70, 30);
-	            comboBox.setSelectedIndex(nivel-1);
+	    contentPane.add(comboBox);  
+	    comboBox.setBounds(120, 0, 70, 30);
+	    comboBox.setSelectedIndex(nivel-1);
             
             
             botaoInicio = new JButton("Iniciar");                         
@@ -136,10 +133,10 @@ public class Frame extends JFrame {
                                 
                 if(!imagens.isEmpty()) { 
                     
-                    int retorno = JOptionPane.showConfirmDialog(null, utfToIso("Deseja usar as imagens que você salvou?"), null, 0, 1);
+                    int retorno = JOptionPane.showConfirmDialog(null, "Deseja usar as imagens que você salvou?", null, 0, 1);
                     if(retorno == 0) { 
                         if(imagens.size() < 6) {
-                           JOptionPane.showMessageDialog(null, "Adicionar no minimo 6 imagens!");
+                           JOptionPane.showMessageDialog(null, "Adicionar no mínimo 6 imagens!");
                            return;
                         }
                     }
@@ -179,7 +176,7 @@ public class Frame extends JFrame {
                        
                if(imagem != null) {
                    
-                   JOptionPane.showMessageDialog(null, utfToIso("A imagem já existe! Escolha outra."));
+                   JOptionPane.showMessageDialog(null, "A imagem já existe! Escolha outra.");
                    return;
                }
                
@@ -232,7 +229,7 @@ public class Frame extends JFrame {
             labelErros.setVisible(true);
             labelErros.setText("Total de erros: "+err);
             
-            JLabel l = new JLabel(utfToIso(mensagemFinal));
+            JLabel l = new JLabel(mensagemFinal);
             Font f = new Font("Bitstream Charter Bold Italic", Font.BOLD, 40);
             l.setFont(f);
             this.getContentPane().add(l);
@@ -249,21 +246,6 @@ public class Frame extends JFrame {
             comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6"}));
             if(imagens.size() > 12 && imagens.size() <= 16)
             comboBox.setModel(new DefaultComboBoxModel(new String[]{"1", "2", "3", "4", "5", "6", "7", "8"}));            
-        }
-        
-        public static String utfToIso(String mensagem){
-            
-        	String retorno = "";
-            byte[] iso;
-            try {
-                iso = new String(mensagem.getBytes(), "UTF-8").getBytes("ISO-8859-1");
-
-                retorno = new String(iso);
-            } catch (UnsupportedEncodingException ex) {
-                ex.printStackTrace();
-            }
-
-            return retorno;
-        }   
+        }       
         
 }

@@ -191,27 +191,12 @@ public class Jogo {
     }
     
     private void definirJogo(){
-        
-        if(frame.getNivel() == 1 || frame.getNivel() == 3) {
-            
-            if(frame.getErros() == 10) derrota();           
-        } 
-        
-        if(frame.getNivel() == 2 || frame.getNivel() == 4) {
-            
-            if(frame.getErros() == 5) derrota();            
-        } 
-        
-        if(frame.getNivel() == 5 || frame.getNivel() == 7) {
-            
-            if(frame.getErros() == 20) derrota();            
-        } 
-        
-         if(frame.getNivel() == 6 || frame.getNivel() == 8) {
-            
-            if(frame.getErros() == 10) derrota();            
-        }               
-        
+                
+        quantiaErros(1, 10);
+        quantiaErros(2, 5);
+        quantiaErros(5, 20);
+        quantiaErros(6, 10);
+                
         if(clone.size() == 0) {
          
             frame.setMensagem("Parabéns! Você venceu!");
@@ -219,9 +204,14 @@ public class Jogo {
         }
     }
     
-    private void derrota() {
-        frame.setMensagem("Fim de jogo! Você perdeu!");
-        frame.gameOver();
-    }
+    private void quantiaErros(int nivel, int erros) {
+        
+        if(frame.getNivel() == nivel || frame.getNivel() == (nivel + 2)) {            
+            if(frame.getErros() == erros) {
+                frame.setMensagem("Fim de jogo! Você perdeu!");
+                frame.gameOver();
+            }            
+        }  
+    } 
        
 }

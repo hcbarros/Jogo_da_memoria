@@ -64,44 +64,10 @@ public class Jogo {
             
     }
     
-    public void jogo1() {
+    public void jogo(int a, int b, int c, int d) {
                 
-        for(int i = 100; i <= 500; i = i + 200) {
-            for(int j = 100; j <= 1000; j = j + 300) {
-                JButton button = criarBotao(j, i);
-                botoes.add(button);
-                int num = imagem;
-                button.addActionListener((ActionEvent evt) -> {
-                    
-                   if(!imagemAtiva) alterar(evt,button, num);                                                            
-                });              
-            }
-        }
-        
-        esconderBotoes(0,2000);
-    }
-    
-    public void jogo2() {
-                
-        for(int i = 100; i <= 500; i = i + 200) {
-            for(int j = 50; j <= 1200; j = j + 200) {
-                JButton button = criarBotao(j, i);
-                botoes.add(button);
-                int num = imagem;
-                button.addActionListener((ActionEvent evt) -> {
-                    
-                   if(!imagemAtiva) alterar(evt,button, num);                                                            
-                });              
-            }
-        }
-        
-        esconderBotoes(0,2000);
-    }
-    
-    public void jogo3() {
-                
-        for(int i = 100; i <= 500; i = i + 200) {
-            for(int j = 30; j <= 1200; j = j + 160) {
+        for(int i = 100; i <= (500 + a); i = i + (200 - a)) {
+            for(int j = b; j <= c; j = j + d) {
                 if(numeros.isEmpty()) break;
                 JButton button = criarBotao(j, i);
                 botoes.add(button);
@@ -113,28 +79,9 @@ public class Jogo {
             }
         }
         
-        esconderBotoes(0,2000);
+        esconderBotoes(0,2000);        
     }
-    
-    public void jogo4() {
-                
-        for(int i = 100; i <= 550; i = i + 150) {
-            for(int j = 30; j <= 1200; j = j + 160) {
-                if(numeros.isEmpty()) break;
-                JButton button = criarBotao(j, i);
-                botoes.add(button);
-                int num = imagem;
-                button.addActionListener((ActionEvent evt) -> {
-                    
-                   if(!imagemAtiva) alterar(evt,button, num);                                                            
-                });              
-            }
-        }
         
-        esconderBotoes(0,2000);
-    }
-    
-    
     private JButton criarBotao(int x, int y) {
         
         imagem = numeros.remove(0);
@@ -237,10 +184,10 @@ public class Jogo {
             if(quantia < 2) numeros.add(num);
         }
         clone = new ArrayList<>(numeros);
-        if(nivel == 1 || nivel == 2) jogo1();
-        if(nivel == 3 || nivel == 4) jogo2();
-        if(nivel == 5 || nivel == 6) jogo3();
-        if(nivel == 7 || nivel == 8) jogo4();
+        if(nivel == 1 || nivel == 2) jogo(0,100,1000,300);
+        if(nivel == 3 || nivel == 4) jogo(0,50,1200,200);
+        if(nivel == 5 || nivel == 6) jogo(0,30,1200,160);
+        if(nivel == 7 || nivel == 8) jogo(50,30,1200,160);
     }
     
     private void definirJogo(){
